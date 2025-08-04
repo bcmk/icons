@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+script_dir="$(dirname "$(readlink -f "$0")")"
+cd "$script_dir/.."
+
+s3cmd put --recursive --acl-public --exclude "*" --include "*.png" png/ s3://xiren/icons/
+s3cmd put --recursive --acl-public --exclude "*" --include "*.svg" src/ s3://xiren/icons/
